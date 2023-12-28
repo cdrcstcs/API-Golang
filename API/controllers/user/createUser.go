@@ -35,6 +35,6 @@ func (uc UserController) CreateUser(c *gin.Context) {
 		return
 	}
 
-	newUser.Id = insertedID
+	newUser.Id = insertedID.String()
 	c.JSON(http.StatusCreated, newUser)
 }

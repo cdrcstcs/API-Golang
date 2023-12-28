@@ -37,7 +37,7 @@ func (ec EventController) CreateEvent(c *gin.Context) {
 		return
 	}
 
-	newEvent.Id = insertedID
+	newEvent.Id = insertedID.String()
 
 	// Respond with the created event
 	c.JSON(http.StatusCreated, newEvent)

@@ -1,4 +1,4 @@
-package initiery
+package itinerary
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func (ic InitieryController) GetInitiery(c *gin.Context) {
+func (ic ItineraryController) GetItinerary(c *gin.Context) {
 	id := c.Param("id")
 	oid, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
@@ -24,15 +24,15 @@ func (ic InitieryController) GetInitiery(c *gin.Context) {
 
 	result := collection.FindOne(ctx, primitive.M{"_id": oid})
 	if result.Err() != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Initiery not found"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Itinerary not found"})
 		return
 	}
 
-	var initiery models.Initiery
-	if err := result.Decode(&initiery); err != nil {
+	var itinerary models.Itinerary
+	if err := result.Decode(&itinerary); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Error decoding JSON: %s", err.Error())})
 		return
 	}
 
-	c.JSON(http.StatusOK, initiery)
+	c.JSON(http.StatusOK, itinerary)
 }

@@ -4,6 +4,8 @@ go 1.19
 
 require (
 	github.com/gin-gonic/gin v1.9.1
+	github.com/golang/mock v1.6.0
+	github.com/pkg/errors v0.9.1
 	github.com/rs/zerolog v1.31.0
 	github.com/stretchr/testify v1.8.4
 	github.com/tryvium-travels/memongo v0.10.0

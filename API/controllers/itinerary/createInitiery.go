@@ -1,4 +1,4 @@
-package initiery
+package itinerary
 
 import (
 	"context"
@@ -11,11 +11,15 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func (ic InitieryController) CreateInitiery(c *gin.Context) {
-	var newInitiery models.Initiery
+func A() {
+	gin.New()
+}
 
-	// Bind JSON request body to newInitiery
-	if err := c.ShouldBindJSON(&newInitiery); err != nil {
+func (ic ItineraryController) CreateItinerary(c *gin.Context) {
+	var newItinerary models.Itinerary
+
+	// Bind JSON request body to newItinerary
+	if err := c.ShouldBindJSON(&newItinerary); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("Error decoding request body: %s", err.Error())})
 		return
 	}
@@ -23,10 +27,10 @@ func (ic InitieryController) CreateInitiery(c *gin.Context) {
 	collection := ic.client.Database("mongo-golang").Collection("initieries")
 	ctx := context.TODO()
 
-	// Insert newInitiery into MongoDB
-	result, err := collection.InsertOne(ctx, newInitiery)
+	// Insert newItinerary into MongoDB
+	result, err := collection.InsertOne(ctx, newItinerary)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Error inserting initiery: %s", err.Error())})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Error inserting itinerary: %s", err.Error())})
 		return
 	}
 
@@ -37,8 +41,8 @@ func (ic InitieryController) CreateInitiery(c *gin.Context) {
 		return
 	}
 
-	newInitiery.Id = insertedID
+	newItinerary.Id = insertedID.String()
 
-	// Respond with the created initiery
-	c.JSON(http.StatusCreated, newInitiery)
+	// Respond with the created itinerary
+	c.JSON(http.StatusCreated, newItinerary)
 }

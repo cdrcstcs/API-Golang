@@ -1,4 +1,4 @@
-package initiery
+package itinerary
 
 import (
 	"context"
@@ -12,16 +12,16 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type InitieryController struct {
+type ItineraryController struct {
 	client *mongo.Client
 }
 
-func NewInitieryController(client *mongo.Client) *InitieryController {
-	return &InitieryController{client}
+func NewItineraryController(client *mongo.Client) *ItineraryController {
+	return &ItineraryController{client}
 }
 
 // GetInitieries handles the GET request for retrieving initieries
-func (ic InitieryController) GetInitieries(c *gin.Context) {
+func (ic ItineraryController) GetInitieries(c *gin.Context) {
 	collection := ic.client.Database("mongo-golang").Collection("initieries")
 	ctx := context.TODO()
 
@@ -33,9 +33,9 @@ func (ic InitieryController) GetInitieries(c *gin.Context) {
 	}
 	defer cursor.Close(ctx)
 
-	var initieries []models.Initiery
+	var initieries []models.Itinerary
 	for cursor.Next(ctx) {
-		var i models.Initiery
+		var i models.Itinerary
 		if err := cursor.Decode(&i); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error decoding JSON"})
 			fmt.Println("Error decoding JSON:", err)

@@ -12,8 +12,10 @@ import (
 	"inititaryplanner/constant"
 )
 
-func GetMainMongoDatabase() *mongo.Database {
-	return GetMongoClient().Database(constant.MainMongoDB)
+type MainMongoDB mongo.Database
+
+func GetMainMongoDatabase() *MainMongoDB {
+	return (*MainMongoDB)(GetMongoClient().Database(constant.MainMongoDB))
 }
 
 func GetMongoClient() *mongo.Client {

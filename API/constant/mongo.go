@@ -10,7 +10,7 @@ const (
 	UserTable       = "user"
 )
 
-// mongo db
+// mongo database
 const (
 	MainMongoDB = "mongo-golang"
 )

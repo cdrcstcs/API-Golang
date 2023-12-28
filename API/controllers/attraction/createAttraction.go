@@ -37,7 +37,7 @@ func (ac AttractionController) CreateAttraction(c *gin.Context) {
 		return
 	}
 
-	newAttraction.Id = insertedID
+	newAttraction.Id = insertedID.String()
 
 	// Respond with the created attraction
 	c.JSON(http.StatusCreated, newAttraction)

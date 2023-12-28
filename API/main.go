@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 
+	"inititaryplanner/controllers/itinerary"
+
 	"inititaryplanner/controllers/attraction"
 	"inititaryplanner/controllers/event"
-	"inititaryplanner/controllers/initiery"
 	"inititaryplanner/controllers/rating"
 	"inititaryplanner/controllers/user"
 
@@ -20,7 +21,7 @@ func main() {
 	uc := user.NewUserController(client)
 	ac := attraction.NewAttractionController(client)
 	ec := event.NewEventController(client)
-	ic := initiery.NewInitieryController(client)
+	ic := itinerary.NewItineraryController(client)
 	rc := rating.NewRatingController(client)
 
 	// User routes
@@ -38,10 +39,10 @@ func main() {
 	r.GET("/event", ec.GetEvents)
 	r.POST("/event", ec.CreateEvent)
 
-	// Initiery routes
-	r.GET("/initiery/:id", ic.GetInitiery)
-	r.GET("/initiery", ic.GetInitieries)
-	r.POST("/initiery", ic.CreateInitiery)
+	// Itinerary routes
+	r.GET("/itinerary/:id", ic.GetItinerary)
+	r.GET("/itinerary", ic.GetInitieries)
+	r.POST("/itinerary", ic.CreateItinerary)
 
 	// Rating routes
 	r.GET("/rating/:id", rc.GetRating)
