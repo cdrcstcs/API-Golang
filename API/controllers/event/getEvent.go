@@ -2,8 +2,9 @@ package event
 
 import (
 	"context"
-	"gopractice/models"
 	"net/http"
+
+	"inititaryplanner/models"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"

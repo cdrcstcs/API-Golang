@@ -1,0 +1,4 @@
+{
+  "server_url": "localhost:8100",
+  "mongo_url": "mongodb://localhost:27017"
+}

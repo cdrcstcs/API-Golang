@@ -2,12 +2,12 @@ package main
 
 import (
 	"context"
-	"gopractice/controllers/attraction"
-	"gopractice/controllers/event"
-	"gopractice/controllers/initiery"
-	"gopractice/controllers/rating"
-	"gopractice/controllers/user"
 
+	"inititaryplanner/controllers/attraction"
+	"inititaryplanner/controllers/event"
+	"inititaryplanner/controllers/initiery"
+	"inititaryplanner/controllers/rating"
+	"inititaryplanner/controllers/user"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"

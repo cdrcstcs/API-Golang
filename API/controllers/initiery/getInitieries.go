@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"gopractice/models"
 
+	"inititaryplanner/models"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -17,7 +17,7 @@ type InitieryController struct {
 }
 
 func NewInitieryController(client *mongo.Client) *InitieryController {
-    return &InitieryController{client}
+	return &InitieryController{client}
 }
 
 // GetInitieries handles the GET request for retrieving initieries
