@@ -5,6 +5,7 @@ import (
 
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
+	"github.com/rs/zerolog/log"
 
 	"inititaryplanner/common/custom_errs"
 	dal_inf "inititaryplanner/dal/inf"
@@ -28,7 +29,7 @@ func (a *attractionService) CreateAttraction(ctx context.Context, req *models.Cr
 	attraction := &models.Attraction{}
 	err := copier.Copy(attraction, req)
 	if err != nil {
-		// TODO logging
+		log.Info().Ctx(ctx).Msgf("copier fails %v", err)
 		return nil, errors.Wrap(custom_errs.ServerError, err.Error())
 	}
 
