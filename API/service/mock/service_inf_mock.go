@@ -12,40 +12,40 @@ import (
 	gomock "github.com/golang/mock/gomock"
 )
 
-// MockAttractionDal is a mock of AttractionDal interface.
-type MockAttractionDal struct {
+// MockAttractionService is a mock of AttractionService interface.
+type MockAttractionService struct {
 	ctrl     *gomock.Controller
-	recorder *MockAttractionDalMockRecorder
+	recorder *MockAttractionServiceMockRecorder
 }
 
-// MockAttractionDalMockRecorder is the mock recorder for MockAttractionDal.
-type MockAttractionDalMockRecorder struct {
-	mock *MockAttractionDal
+// MockAttractionServiceMockRecorder is the mock recorder for MockAttractionService.
+type MockAttractionServiceMockRecorder struct {
+	mock *MockAttractionService
 }
 
-// NewMockAttractionDal creates a new mock instance.
-func NewMockAttractionDal(ctrl *gomock.Controller) *MockAttractionDal {
-	mock := &MockAttractionDal{ctrl: ctrl}
-	mock.recorder = &MockAttractionDalMockRecorder{mock}
+// NewMockAttractionService creates a new mock instance.
+func NewMockAttractionService(ctrl *gomock.Controller) *MockAttractionService {
+	mock := &MockAttractionService{ctrl: ctrl}
+	mock.recorder = &MockAttractionServiceMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockAttractionDal) EXPECT() *MockAttractionDalMockRecorder {
+func (m *MockAttractionService) EXPECT() *MockAttractionServiceMockRecorder {
 	return m.recorder
 }
 
 // CreateAttraction mocks base method.
-func (m *MockAttractionDal) CreateAttraction(ctx context.Context, attraction *models.CreateAttractionReq) (*models.CreateAttractionResp, error) {
+func (m *MockAttractionService) CreateAttraction(ctx context.Context, req *models.CreateAttractionReq) (*models.CreateAttractionResp, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateAttraction", ctx, attraction)
+	ret := m.ctrl.Call(m, "CreateAttraction", ctx, req)
 	ret0, _ := ret[0].(*models.CreateAttractionResp)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // CreateAttraction indicates an expected call of CreateAttraction.
-func (mr *MockAttractionDalMockRecorder) CreateAttraction(ctx, attraction interface{}) *gomock.Call {
+func (mr *MockAttractionServiceMockRecorder) CreateAttraction(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateAttraction", reflect.TypeOf((*MockAttractionDal)(nil).CreateAttraction), ctx, attraction)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateAttraction", reflect.TypeOf((*MockAttractionService)(nil).CreateAttraction), ctx, req)
 }

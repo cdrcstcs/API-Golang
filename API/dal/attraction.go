@@ -14,7 +14,7 @@ import (
 	"inititaryplanner/models"
 )
 
-func GetAttractionDal(mainDB *db.MainMongoDB) inf.AttractionDal {
+func NewAttractionDal(mainDB *db.MainMongoDB) inf.AttractionDal {
 	return &attractionDal{
 		mainDB: (*mongo.Database)(mainDB),
 	}

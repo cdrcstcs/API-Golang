@@ -5,7 +5,6 @@ type AttractionDTO struct {
 	Name       string     `bson:"name" json:"name"`
 	Address    string     `bson:"address" json:"address"`
 	Coordinate Coordinate `bson:"coordinate" json:"coordinate"`
-	TagIDs     []string   `bson:"tag_ids" json:"tag_ids"`
 	Tags       []Tag      `bson:"tags" json:"tags"`
 }
 
@@ -17,5 +16,5 @@ type CreateAttractionReq struct {
 }
 
 type CreateAttractionResp struct {
-	Attraction *Attraction `json:"attraction"`
+	Attraction *AttractionDTO `json:"attraction"`
 }
